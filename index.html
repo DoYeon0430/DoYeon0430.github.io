@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="우리가 만났던 날들과 다가오는 디데이를 기록하는 홈페이지입니다. 특별한 순간들을 기억하고 공유하세요.">
+    <meta name="og:url" content="https://doyeon0430.github.io/" />
+    <meta name="author" content="Doyeon0430">
+
+
+    <meta property="og:title" content="우리의 디데이">
+    <meta property="og:description" content="우리가 만났던 날들과 다가오는 디데이를 기록하는 홈페이지입니다. 특별한 순간들을 기억하고 공유하세요.">
+    <meta property="og:image" content="https://cdn.pixabay.com/photo/2017/08/06/20/11/wedding-2595862_1280.jpg">
+
+    <title>우리의 디데이</title>
+</head>
+
+<style>
+    /* 전체 페이지 스타일링 */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 헤더 스타일링 */
+    header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    /* 제목 스타일링 */
+    h1 {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    /* 섹션 스타일링 */
+    section {
+        background-color: #fff;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 리스트 스타일링 */
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        font-size: 18px;
+        color: #6d4949;
+        margin-bottom: 13px;
+        cursor: pointer;
+    }
+
+    /* 카운트다운 스타일링 */
+    #countdown {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 10px;
+        color: #ff5733;
+        text-align: center;
+        animation: animate 2s infinite;
+    }
+
+    #additional-info {
+    margin: 10px;
+    }
+
+    @keyframes animate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style>
+
+<body>
+    <header>
+        <h1>우리의 디데이</h1>
+    </header>
+    <section class="countdown">
+        <h2>🕞 디데이 카운트다운</h2>
+        <p id="countdown"></p>
+    </section>
+    <section class="dates">
+        <h2>📆 만났던 날짜들</h2>
+        <ul id="date-list">
+        </ul>
+    </section>
+    <section>
+        <h2>📋 주요 활동</h2>
+        <div id="additional-info">
+            <span style="font-weight: bold; color: #7a7a7a;">해당하는 날짜를 클릭하세요.</span>
+        </div>
+    </section>
+
+    <script>
+        const meetingDates = [
+            { date: new Date('2023-04-29'), text: '연신내역', details: '연신내 달빛포차' },
+            { date: new Date('2023-06-14'), text: '숙명여대역', details: '숙명여대 마시앤바시' },
+            { date: new Date('2023-07-05'), text: '용산역', details: 'CGV 용산아이파크몰' },
+            { date: new Date('2023-07-27'), text: '응암역', details: '응암동 벚꽃나무' },
+            { date: new Date('2023-08-04'), text: '마두역', details: '일산 마음식당' },
+            { date: new Date('2023-08-19'), text: '시청역', details: '서울 국립현대미술관' },
+            { date: new Date('2023-08-24'), text: '광교역', details: '도시남녀의 사랑법' },
+            { date: new Date('2023-08-30'), text: '홍제역', details: '홍제동 안짱' }
+        ];
+
+        const dateList = document.getElementById('date-list');
+        const countdown = document.getElementById('countdown');
+
+        const additionalInfo = document.getElementById('additional-info');
+
+        // 만났던 날짜 목록의 각 항목에 클릭 이벤트를 추가합니다.
+        meetingDates.forEach((entry, index) => {
+            const listItem = document.createElement('li');
+            const day = entry.date.getDate().toString().padStart(2, '0');
+            const dateText = `🌫 ${entry.date.getFullYear()}년 ${entry.date.getMonth() + 1}월 ${day}일`;
+
+            // 클릭 이벤트를 추가합니다.
+            listItem.textContent = dateText;
+            listItem.addEventListener('click', () => {
+                // 클릭된 항목의 정보를 추가 정보 요소에 표시합니다.
+                const infoText = `${entry.date.getFullYear()}년 ${entry.date.getMonth() + 1}월 ${day}일 - ${entry.details}`;
+                additionalInfo.textContent = infoText;
+            });
+
+            dateList.appendChild(listItem);
+        });
+
+        const today = new Date();
+        const dDay = new Date('2023-08-20');
+        const daysRemaining = Math.floor((today - dDay) / (1000 * 60 * 60 * 24));
+
+        countdown.textContent = `${daysRemaining + 2}일`;
+    </script>
+</body>
+
+</html>
