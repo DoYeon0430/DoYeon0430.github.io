@@ -18,7 +18,6 @@
 </head>
 
 <style>
-    /* 전체 페이지 스타일링 */
     body {
         font-family: Arial, sans-serif;
         background-color: #f0f0f0;
@@ -26,7 +25,6 @@
         padding: 0;
     }
 
-    /* 헤더 스타일링 */
     header {
         background-color: #333;
         color: #fff;
@@ -34,13 +32,11 @@
         padding: 20px 0;
     }
 
-    /* 제목 스타일링 */
     h1 {
         font-size: 24px;
         margin: 0;
     }
 
-    /* 섹션 스타일링 */
     section {
         background-color: #fff;
         margin: 20px;
@@ -49,7 +45,6 @@
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     }
 
-    /* 리스트 스타일링 */
     ul {
         list-style: none;
         padding: 0;
@@ -62,7 +57,6 @@
         cursor: pointer;
     }
 
-    /* 카운트다운 스타일링 */
     #countdown {
         font-size: 32px;
         font-weight: bold;
@@ -73,20 +67,22 @@
     }
 
     #additional-info {
-    margin: 10px;
+        margin: 10px;
     }
 
     @keyframes animate {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.1);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
 </style>
 
 <body>
@@ -94,7 +90,7 @@
         <h1>우리의 디데이</h1>
     </header>
     <section class="countdown">
-        <h2>🕞 디데이 카운트다운</h2>
+        <h2>🕞 디데이 기준</h2>
         <p id="countdown"></p>
     </section>
     <section class="dates">
@@ -113,12 +109,12 @@
         const meetingDates = [
             { date: new Date('2023-04-29'), text: '연신내역', details: '연신내 달빛포차' },
             { date: new Date('2023-06-14'), text: '숙명여대역', details: '숙명여대 마시앤바시' },
-            { date: new Date('2023-07-05'), text: '용산역', details: 'CGV 용산아이파크몰' },
-            { date: new Date('2023-07-27'), text: '응암역', details: '응암동 벚꽃나무' },
+            { date: new Date('2023-07-05'), text: '용산역', details: '용산 CGV' },
+            { date: new Date('2023-07-27'), text: '응암역', details: '응암 벚꽃나무' },
             { date: new Date('2023-08-04'), text: '마두역', details: '일산 마음식당' },
             { date: new Date('2023-08-19'), text: '시청역', details: '서울 국립현대미술관' },
             { date: new Date('2023-08-24'), text: '광교역', details: '도시남녀의 사랑법' },
-            { date: new Date('2023-08-30'), text: '홍제역', details: '홍제동 안짱' }
+            { date: new Date('2023-08-30'), text: '홍제역', details: '홍제 안짱' }
         ];
 
         const dateList = document.getElementById('date-list');
@@ -143,11 +139,16 @@
             dateList.appendChild(listItem);
         });
 
+        const dDay = new Date('2023-08-20T00:00:00');
         const today = new Date();
-        const dDay = new Date('2023-08-20');
-        const daysRemaining = Math.floor((today - dDay) / (1000 * 60 * 60 * 24));
+        today.setHours(0, 0, 0, 0); //시간 무시하기
+        const timeDifference = today - dDay;
+        const oneDay = 24 * 60 * 60 * 1000;
+        const daysPassed = Math.floor(timeDifference / oneDay) + 1; //만난 날 기준으로 1일
 
-        countdown.textContent = `${daysRemaining + 2}일`;
+        countdown.textContent = `${daysPassed}일`;
+
+
     </script>
 </body>
 
