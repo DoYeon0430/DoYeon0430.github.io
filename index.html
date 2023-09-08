@@ -45,18 +45,6 @@
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     }
 
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    li {
-        font-size: 18px;
-        color: #6d4949;
-        margin-bottom: 13px;
-        cursor: pointer;
-    }
-
     #countdown {
         font-size: 32px;
         font-weight: bold;
@@ -66,8 +54,35 @@
         animation: animate 2s infinite;
     }
 
-    #additional-info {
+    #date-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    #date-list li {
+        font-size: 18px;
+        color: #6d4949;
+        margin-bottom: 13px;
+        cursor: pointer;
+    }
+
+    #main_add, #main_day, #main_subway {
+        font-size: 16px;
+        color: #000;
         margin: 10px;
+    }
+
+    #future-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    #future-list li {
+        font-size: 16px;
+        font-weight: bold;
+        font-style: italic;
+        color: #ff8a8a;
+        margin-bottom: 13px;
     }
 
     @keyframes animate {
@@ -100,45 +115,51 @@
     </section>
     <section>
         <h2>📋 주요 활동</h2>
-        <div id="additional-info">
+        <div id="main_day">
             <span style="color: #7a7a7a;">해당하는 날짜를 클릭하세요.</span>
         </div>
+        <div id="main_subway">
+            <span style="color: #7a7a7a;"></span>
+        </div>
+        <div id="main_add">
+            <span style="color: #7a7a7a;"></span>
+        </div>
+    </section>
+    <section>
+        <h2>⭐ 미래 계획</h2>
+        <ul id="future-list">
+        </ul>
     </section>
 
     <script>
+        // 변수 선언 //
         const meetingDates = [
-            { date: new Date('2023-04-29'), text: '연신내역', details: '연신내 달빛포차' },
-            { date: new Date('2023-06-14'), text: '숙명여대역', details: '숙명여대 마시앤바시' },
-            { date: new Date('2023-07-05'), text: '용산역', details: '용산 CGV' },
-            { date: new Date('2023-07-27'), text: '응암역', details: '응암 벚꽃나무' },
-            { date: new Date('2023-08-04'), text: '마두역', details: '일산 마음식당' },
-            { date: new Date('2023-08-19'), text: '시청역', details: '서울 국립현대미술관' },
-            { date: new Date('2023-08-24'), text: '광교역', details: '광교 스쿨푸드' },
-            { date: new Date('2023-08-30'), text: '홍제역', details: '홍제 안짱' }
+            { date: new Date('2023-04-29'), text: '서울시 은평구', details: '연신내 달빛포차' },
+            { date: new Date('2023-06-14'), text: '서울시 용산구', details: '숙명여대 마시앤바시' },
+            { date: new Date('2023-07-05'), text: '서울시 용산구', details: '용산 CGV' },
+            { date: new Date('2023-07-27'), text: '서울시 은평구', details: '응암 벚꽃나무' },
+            { date: new Date('2023-08-04'), text: '고양시 일산동구', details: '일산 마음식당' },
+            { date: new Date('2023-08-19'), text: '서울시 종로구', details: '서울 국립현대미술관' },
+            { date: new Date('2023-08-24'), text: '수원시 장안구', details: '광교 스쿨푸드' },
+            { date: new Date('2023-08-30'), text: '서울시 서대문구', details: '홍제 안짱' },
+            { date: new Date('2023-09-07'), text: '서울시 은평구', details: '녹번 지하실꼼지락' }
         ];
-
-        const dateList = document.getElementById('date-list');
+        const futureDates = [
+            { date: '남산타워 가기' },
+            { date: '가을에 등산하기' },
+            { date: '강릉 여행하기' },
+            { date: '배낭 여행하기' },
+            { date: '한강에서 야경보기' }
+        ];
         const countdown = document.getElementById('countdown');
+        const dateList = document.getElementById('date-list');
+        const main_day = document.getElementById('main_day');
+        const main_subway = document.getElementById('main_subway');
+        const main_add = document.getElementById('main_add');
+        const futurelist = document.getElementById('future-list');
+        
 
-        const additionalInfo = document.getElementById('additional-info');
-
-        // 만났던 날짜 목록의 각 항목에 클릭 이벤트를 추가합니다.
-        meetingDates.forEach((entry, index) => {
-            const listItem = document.createElement('li');
-            const day = entry.date.getDate().toString().padStart(2, '0');
-            const dateText = `${entry.date.getFullYear()}년 ${entry.date.getMonth() + 1}월 ${day}일`;
-
-            // 클릭 이벤트를 추가합니다.
-            listItem.textContent = dateText;
-            listItem.addEventListener('click', () => {
-                // 클릭된 항목의 정보를 추가 정보 요소에 표시합니다.
-                const infoText = `${entry.date.getFullYear()}년 ${entry.date.getMonth() + 1}월 ${day}일 - ${entry.details}`;
-                additionalInfo.textContent = infoText;
-            });
-
-            dateList.appendChild(listItem);
-        });
-
+        // 1. 디데이 기준 //
         const dDay = new Date('2023-08-20T00:00:00');
         const today = new Date();
         today.setHours(0, 0, 0, 0); //시간 무시하기
@@ -149,7 +170,36 @@
         countdown.textContent = `${daysPassed}일`;
 
 
-    </script>
+        // 2. 만났던 날짜들 / 주요 활동 //
+        meetingDates.forEach((entry, index) => {
+            const listItem = document.createElement('li');
+            const day = entry.date.getDate().toString().padStart(2, '0');
+            const dateText = `${entry.date.getFullYear()}년 ${entry.date.getMonth() + 1}월 ${day}일`;
+            
+            listItem.textContent = dateText;
+            listItem.addEventListener('click', () => {
+                const infoText1 = `날짜 - ${entry.date.getFullYear()}. ${entry.date.getMonth() + 1}. ${day}`;
+                main_day.textContent = infoText1;
+                const infoText2 = `위치 - ${entry.text}`;
+                main_subway.textContent = infoText2;
+                const infoText3 = `장소 - ${entry.details}`;
+                main_add.textContent = infoText3;
+            });
+            
+            dateList.appendChild(listItem);
+        });
+
+
+        // 3. 미래 계획 //
+        futureDates.forEach((entry, index) => {
+            const listItem = document.createElement('li');
+            const dateText = `${index + 1}. ${entry.date}`;
+            listItem.textContent = dateText;
+
+            futurelist.appendChild(listItem);
+        })
+        
+        </script>
 </body>
 
 </html>
