@@ -86,29 +86,29 @@
     .login-label {
         display: block;
         margin-bottom: 10px;
-        font-size: 16px;
+        font-size: 20px;
         font-weight: bold;
     }
 
     .login-input {
-        width: 100%;
+        width: 80%;
         padding: 10px;
         box-sizing: border-box;
         border: 1px solid #ccc;
         border-radius: 5px;
-        font-size: 16px;
+        font-size: 20px;
         margin-bottom: 10px;
     }
 
     .login-button {
-        width: 100%;
+        width: 80%;
         padding: 10px;
         background-color: #ff7777;
         color: #fff;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 20px;
         font-weight: bold;
     }
 
@@ -312,26 +312,27 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                var passwordForm = document.getElementById('passwordForm');
-                var sections = document.querySelectorAll('section');
-                var header = document.querySelector('header');
-
-                passwordForm.addEventListener('submit', function (event) {
-                    event.preventDefault(); // Prevent the form from submitting and refreshing the page
+              var passwordForm = document.getElementById('passwordForm');
+              var sections = document.querySelectorAll('section');
+              var header = document.querySelector('header');
         
-                    var passwordInput = document.getElementById('password');
-                    var password = passwordInput.value;
+              passwordForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the form from submitting and refreshing the page
         
-                    if (password === '230820') {
-                        passwordForm.style.display = 'none';
-                        header.style.display = 'block';
-                        sections.forEach(function (section) {
-                            section.style.display = 'block';
-                        });
-                    } else {
-                        alert('비밀번호가 틀렸습니다. 다시 입력해주세요.');
-                    }
-                });
+                var passwordInput = document.getElementById('password');
+                var password = passwordInput.value;
+        
+                if (password === '230820') {
+                  passwordForm.style.display = 'none';
+                  header.style.display = 'block';
+                  sections.forEach(function (section) {
+                    section.style.display = 'block';
+                  });
+                } else {
+                  alert('비밀번호가 틀렸습니다. 다시 입력해주세요.');
+                  passwordInput.value = ''; // 비밀번호가 틀릴 경우 입력창을 비워줍니다.
+                }
+              });
             });
         </script>
         <script>
