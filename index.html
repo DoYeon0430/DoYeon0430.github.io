@@ -37,12 +37,43 @@
         margin: 0;
     }
 
+    h3 {
+        font-size: 20px;
+        padding-top: 20px;
+        margin: 0;
+        color: #db34bc;
+    }
+
     section {
         background-color: #fff;
         margin: 20px;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .schedule {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .event {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .event strong {
+      color: #3498db;
+    }
+
+    .target {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
     }
 
     #countdown {
@@ -130,6 +161,32 @@
         <ul id="future-list">
         </ul>
     </section>
+    <section>
+        <h2>🏖️ 100일 기념 행사</h2>
+        <p><strong>대상</strong> : 김도연, 강유선</p>
+        <p><strong>장소</strong> : 영종도 하늘공원 & 마시안해변</p>
+        <p><strong>일시</strong> : 2023-11-25 (토)</p>
+        <p><strong>집결지</strong> : 공항화물청사역</p>
+        </p>
+
+        <h3>⏰시간표⏰</h3>
+        <ul class="schedule">
+            <li class="event"><strong>13:00~14:00</strong> : 하늘정원 이동</li>
+            <li class="event"><strong>14:00~16:00</strong> : 하늘정원</li>
+            <li class="event"><strong>16:00~17:00</strong> : 화물청사역 이동</li>
+            <li class="event"><strong>17:00~18:00</strong> : 마시안해변 이동</li>
+            <li class="event"><strong>18:00~19:00</strong> : 저녁식사 & 디저트</li>
+            <li class="event"><strong>19:00~20:00</strong> : 마시안해변</li>
+            <li class="event"><strong>20:00~21:00</strong> : 인천공항역 이동</li>
+        </ul>
+
+        <h3>🚌버스 정보🚌</h3>
+        <p><strong>버스</strong> : 111번</p>
+        <p><strong>배차간격</strong> : 주말 21~23 분</p>
+        <p><strong>왕산차고지 방면 막차</strong> : 22:30</p>
+        <p><strong>십정동차고지 방면 막차</strong> : 20:40</p>
+
+    </section>
 
     <script>
         // 변수 선언 //
@@ -174,7 +231,6 @@
         const timeDifference = today - dDay;
         const oneDay = 24 * 60 * 60 * 1000;
         const daysPassed = Math.floor(timeDifference / oneDay) + 1; //만난 날 기준으로 1일
-
         countdown.textContent = `${daysPassed}일`;
 
 
