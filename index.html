@@ -26,6 +26,7 @@
     }
 
     header {
+        display: none;
         background-color: #333;
         color: #fff;
         text-align: center;
@@ -45,6 +46,7 @@
     }
 
     section {
+        display: none;
         background-color: #fff;
         margin: 20px;
         padding: 20px;
@@ -53,23 +55,61 @@
     }
 
     .schedule {
-      list-style-type: none;
-      padding: 0;
+        list-style-type: none;
+        padding: 0;
     }
 
     .event {
-      background-color: #fff;
-      margin: 10px 0;
-      padding: 15px;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .target {
-      background-color: #3498db;
-      color: #fff;
-      padding: 10px;
-      border-radius: 5px;
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .login-form {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* 뷰포트 높이의 100%로 설정하여 수직 가운데 정렬 */
+    }
+
+    .login-label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .login-input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .login-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #ff7777;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
     }
 
     #countdown {
@@ -258,7 +298,52 @@
 
             futurelist.appendChild(listItem);
         })
+        </script>
+
+        <div id="passwordForm" class="login-container">
+            <div class="login-form">
+                <form id="loginForm">
+                <label for="password" class="login-label">우리가 처음 사귄 날짜</label>
+                <input type="password" id="password" class="login-input" placeholder="">
+                <button type="submit" class="login-button">입장하기</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var passwordForm = document.getElementById('passwordForm');
+                var sections = document.querySelectorAll('section');
+                var header = document.querySelector('header');
+
+                passwordForm.addEventListener('submit', function (event) {
+                    event.preventDefault(); // Prevent the form from submitting and refreshing the page
         
+                    var passwordInput = document.getElementById('password');
+                    var password = passwordInput.value;
+        
+                    if (password === '230820') {
+                        passwordForm.style.display = 'none';
+                        header.style.display = 'block';
+                        sections.forEach(function (section) {
+                            section.style.display = 'block';
+                        });
+                    } else {
+                        alert('비밀번호가 틀렸습니다. 다시 입력해주세요.');
+                    }
+                });
+            });
+        </script>
+        <script>
+        // 현재 날짜를 생성
+            const nowday = new Date();
+            const year = nowday.getFullYear().toString().substr(-2);
+            const month = (today.getMonth() + 1).toString().padStart(2, '0');
+            const day = today.getDate().toString().padStart(2, '0');
+        
+            // 날짜를 YYYY-MM-DD 형식으로 변환하여 placeholder에 적용
+            const datesum = `${year}${month}${day}`;
+            document.getElementById('password').placeholder = `ex) ${datesum}`;
         </script>
 </body>
 
