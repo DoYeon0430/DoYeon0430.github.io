@@ -2,315 +2,329 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="특별한 순간들을 기억하고 공유하세요.">
-    <meta name="og:url" content="https://doyeon0430.github.io/" />
-    <meta name="author" content="Doyeon0430">
+  <meta name="description" content="특별한 순간들을 기억하고 공유하세요.">
+  <meta name="og:url" content="https://doyeon0430.github.io/" />
+  <meta name="author" content="Doyeon0430">
 
 
-    <meta property="og:title" content="우리의 디데이">
-    <meta property="og:description" content="특별한 순간들을 기억하고 공유하세요.">
-    <meta property="og:image" content="https://cdn.pixabay.com/photo/2017/08/06/20/11/wedding-2595862_1280.jpg">
+  <meta property="og:title" content="우리의 디데이">
+  <meta property="og:description" content="특별한 순간들을 기억하고 공유하세요.">
+  <meta property="og:image" content="https://cdn.pixabay.com/photo/2017/08/06/20/11/wedding-2595862_1280.jpg">
 
-    <title>우리의 디데이</title>
+  <title>우리의 디데이</title>
 </head>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    display: none;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 20px;
+    padding-top: 20px;
+    margin: 0;
+    color: #50c32c;
+  }
+
+  section {
+    /* display: none; */
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .schedule {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .event {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .target {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .login-form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* 뷰포트 높이의 100%로 설정하여 수직 가운데 정렬 */
+  }
+
+  .login-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .login-input {
+    width: 80%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .login-button {
+    width: 80%;
+    padding: 10px;
+    background-color: #ff7777;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  #countdown {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 10px;
+    color: #ff5733;
+    text-align: center;
+    animation: animate 2s infinite;
+  }
+
+  #date-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  #date-list li {
+    font-size: 18px;
+    color: #6d4949;
+    margin-bottom: 13px;
+    cursor: pointer;
+  }
+
+  #main_add,
+  #main_day,
+  #main_subway {
+    font-size: 16px;
+    color: #000;
+    margin: 10px;
+  }
+
+  #future-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  #future-list li {
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    color: #ff8a8a;
+    margin-bottom: 13px;
+  }
+
+  @keyframes animate {
+    0% {
+      transform: scale(1);
     }
 
-    header {
-        display: none;
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        padding: 20px 0;
+    50% {
+      transform: scale(1.1);
     }
 
-    h1 {
-        font-size: 24px;
-        margin: 0;
+    100% {
+      transform: scale(1);
     }
-
-    h3 {
-        font-size: 20px;
-        padding-top: 20px;
-        margin: 0;
-        color: #50c32c;
-    }
-
-    section {
-        display: none;
-        background-color: #fff;
-        margin: 20px;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .schedule {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    .event {
-        background-color: #fff;
-        margin: 10px 0;
-        padding: 15px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .target {
-        background-color: #3498db;
-        color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-    }
-
-    .login-form {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh; /* 뷰포트 높이의 100%로 설정하여 수직 가운데 정렬 */
-    }
-
-    .login-label {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    .login-input {
-        width: 80%;
-        padding: 10px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-
-    .login-button {
-        width: 80%;
-        padding: 10px;
-        background-color: #ff7777;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    #countdown {
-        font-size: 32px;
-        font-weight: bold;
-        margin: 10px;
-        color: #ff5733;
-        text-align: center;
-        animation: animate 2s infinite;
-    }
-
-    #date-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    #date-list li {
-        font-size: 18px;
-        color: #6d4949;
-        margin-bottom: 13px;
-        cursor: pointer;
-    }
-
-    #main_add, #main_day, #main_subway {
-        font-size: 16px;
-        color: #000;
-        margin: 10px;
-    }
-
-    #future-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    #future-list li {
-        font-size: 16px;
-        font-weight: bold;
-        font-style: italic;
-        color: #ff8a8a;
-        margin-bottom: 13px;
-    }
-
-    @keyframes animate {
-        0% {
-            transform: scale(1);
-        }
-
-        50% {
-            transform: scale(1.1);
-        }
-
-        100% {
-            transform: scale(1);
-        }
-    }
+  }
 </style>
 
 <body>
-    <header>
-        <h1>우리의 디데이</h1>
-    </header>
-    <section class="countdown">
-        <h2>🕞 디데이 기준</h2>
-        <p id="countdown"></p>
-    </section>
-    <section class="dates">
-        <h2>📆 만났던 날짜들</h2>
-        <ul id="date-list">
-        </ul>
-    </section>
-    <section>
-        <h2>📋 주요 활동</h2>
-        <div id="main_day">
-            <span style="color: #7a7a7a;">해당하는 날짜를 클릭하세요.</span>
-        </div>
-        <div id="main_subway">
-            <span style="color: #7a7a7a;"></span>
-        </div>
-        <div id="main_add">
-            <span style="color: #7a7a7a;"></span>
-        </div>
-    </section>
-    <section>
-        <h2>⭐ 미래 계획</h2>
-        <ul id="future-list">
-        </ul>
-    </section>
-    <section>
-        <h2>🏖️ 100일 기념 행사</h2>
-        <p><strong>대상</strong> : 김도연, 강유선</p>
-        <p><strong>장소</strong> : 영종도 하늘공원 & 마시안해변</p>
-        <p><strong>일시</strong> : 2023-11-25 (토)</p>
-        <p><strong>집결지</strong> : 공항화물청사역</p>
-        </p>
+  <header>
+    <h1>우리의 디데이</h1>
+  </header>
+  <section class="countdown">
+    <h2>🕞 디데이 기준</h2>
+    <p id="countdown"></p>
+  </section>
+  <section class="dates">
+    <h2>📆 만났던 날짜들</h2>
+    <ul id="date-list">
+    </ul>
+  </section>
+  <section>
+    <h2>📋 주요 활동</h2>
+    <div id="main_day">
+      <span style="color: #7a7a7a;">해당하는 날짜를 클릭하세요.</span>
+    </div>
+    <div id="main_subway">
+      <span style="color: #7a7a7a;"></span>
+    </div>
+    <div id="main_add">
+      <span style="color: #7a7a7a;"></span>
+    </div>
+  </section>
+  <section>
+    <h2>⭐ 미래 계획</h2>
+    <ul id="future-list">
+    </ul>
+  </section>
+  <section>
+    <h2>🏖️ 100일 기념 행사</h2>
+    <p><strong>대상</strong> : 김도연, 강유선</p>
+    <p><strong>장소</strong> : 영종도 하늘공원 & 마시안해변</p>
+    <p><strong>일시</strong> : 2023-11-25 (토)</p>
+    <p><strong>집결지</strong> : 공항화물청사역</p>
+    </p>
 
-        <h3>시간표</h3>
-        <ul class="schedule">
-            <li class="event"><strong>13:00~14:00</strong> : 하늘정원 이동</li>
-            <li class="event"><strong>14:00~16:00</strong> : 하늘정원</li>
-            <li class="event"><strong>16:00~17:00</strong> : 화물청사역 이동</li>
-            <li class="event"><strong>17:00~18:00</strong> : 마시안해변 이동</li>
-            <li class="event"><strong>18:00~19:00</strong> : 저녁식사 & 디저트</li>
-            <li class="event"><strong>19:00~20:00</strong> : 마시안해변</li>
-            <li class="event"><strong>20:00~21:00</strong> : 인천공항역 이동</li>
-        </ul>
+    <h3>시간표</h3>
+    <ul class="schedule">
+      <li class="event"><strong>13:00~14:00</strong> : 하늘정원 이동</li>
+      <li class="event"><strong>14:00~16:00</strong> : 하늘정원</li>
+      <li class="event"><strong>16:00~17:00</strong> : 화물청사역 이동</li>
+      <li class="event"><strong>17:00~18:00</strong> : 마시안해변 이동</li>
+      <li class="event"><strong>18:00~19:00</strong> : 저녁식사 & 디저트</li>
+      <li class="event"><strong>19:00~20:00</strong> : 마시안해변</li>
+      <li class="event"><strong>20:00~21:00</strong> : 인천공항역 이동</li>
+    </ul>
 
-        <h3>버스 정보</h3>
-        <p><strong>버스</strong> : 111번</p>
-        <p><strong>배차간격</strong> : 주말 21~23 분</p>
-        <p><strong>왕산차고지 방면 막차</strong> : 22:30</p>
-        <p><strong>십정동차고지 방면 막차</strong> : 20:40</p>
+    <h3>버스 정보</h3>
+    <p><strong>버스</strong> : 111번</p>
+    <p><strong>배차간격</strong> : 주말 21~23 분</p>
+    <p><strong>왕산차고지 방면 막차</strong> : 22:30</p>
+    <p><strong>십정동차고지 방면 막차</strong> : 20:40</p>
 
-        <h3>인생네컷 포즈</h3>
-        <p><strong>1. </strong>브이 포즈</p>
-        <p><strong>2. </strong>한쪽 턱에 손 올리는 포즈</p>
-        <p><strong>3. </strong>핫도그 포즈</p>
-        <p><strong>4. </strong>뽀뽀 포즈</p>
-        <p><strong>5. </strong>볼하트 포즈</p>
-        <p><strong>6. </strong>마멜&쿠로미피스 포즈</p>
-        <p><strong>7. </strong>체리피스 브이 포즈</p>
-        <p><strong>8. </strong>등 기대는 포즈</p>
-    </section>
-
-    <script>
-        // 변수 선언 //
-        const meetingDates = [
-            { date: new Date('2023-04-29'), text: '서울시 은평구', details: '연신내 달빛포차' },
-            { date: new Date('2023-06-14'), text: '서울시 용산구', details: '숙명여대 마시앤바시' },
-            { date: new Date('2023-07-05'), text: '서울시 용산구', details: '용산 CGV' },
-            { date: new Date('2023-07-27'), text: '서울시 은평구', details: '응암 벚꽃나무' },
-            { date: new Date('2023-08-04'), text: '고양시 일산동구', details: '일산 마음식당' },
-            { date: new Date('2023-08-19'), text: '서울시 종로구', details: '서울 국립현대미술관' },
-            { date: new Date('2023-08-24'), text: '수원시 장안구', details: '광교 집' },
-            { date: new Date('2023-08-30'), text: '서울시 서대문구', details: '홍제 안짱' },
-            { date: new Date('2023-09-07'), text: '서울시 은평구', details: '녹번 지하실꼼지락' },
-            { date: new Date('2023-09-14'), text: '수원시 장안구', details: '광교 집' },
-            { date: new Date('2023-09-21'), text: '서울시 은평구', details: '연신내 방탈출 미로' },
-            { date: new Date('2023-10-02'), text: '서울시 은평구', details: '한강 따릉이 자전거' },
-            { date: new Date('2023-10-09'), text: '서울시 은평구', details: '녹번 지하실꼼지락' },
-            { date: new Date('2023-10-27'), text: '서울시 은평구', details: '불광 CGV' },
-            { date: new Date('2023-11-04'), text: '수원시 장안구', details: '광교 집' },
-            { date: new Date('2023-11-18'), text: '서울시 은평구', details: '연신내 레드버튼카페' },
-            { date: new Date('2023-11-22'), text: '서울시 은평구', details: '녹번 투썸플레이스' },
-            { date: new Date('2023-12-03'), text: '서울시 서대문구', details: '홍제 안짱' }
-        ];
-        const futureDates = [
-            { date: '남산타워 가기' },
-            { date: '가을에 등산하기' },
-            { date: '강릉 여행하기' },
-            { date: '배낭 여행하기' },
-            { date: '한강에서 야경보기' }
-        ];
-        const countdown = document.getElementById('countdown');
-        const dateList = document.getElementById('date-list');
-        const main_day = document.getElementById('main_day');
-        const main_subway = document.getElementById('main_subway');
-        const main_add = document.getElementById('main_add');
-        const futurelist = document.getElementById('future-list');
-        
-
-        // 1. 디데이 기준 //
-        const dDay = new Date('2023-08-20T00:00:00');
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); //시간 무시하기
-        const timeDifference = today - dDay;
-        const oneDay = 24 * 60 * 60 * 1000;
-        const daysPassed = Math.floor(timeDifference / oneDay) + 1; //만난 날 기준으로 1일
-        countdown.textContent = `${daysPassed}일`;
+    <h3>인생네컷 포즈</h3>
+    <p><strong>1. </strong>브이 포즈</p>
+    <p><strong>2. </strong>한쪽 턱에 손 올리는 포즈</p>
+    <p><strong>3. </strong>핫도그 포즈</p>
+    <p><strong>4. </strong>뽀뽀 포즈</p>
+    <p><strong>5. </strong>볼하트 포즈</p>
+    <p><strong>6. </strong>마멜&쿠로미피스 포즈</p>
+    <p><strong>7. </strong>체리피스 브이 포즈</p>
+    <p><strong>8. </strong>등 기대는 포즈</p>
+  </section>
+  <section>
+    <h2>🐾 우리 아가</h2>
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/104174838/296515418-058e808e-1a0b-44b1-9976-74ec708e4f91.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240113%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240113T210341Z&X-Amz-Expires=300&X-Amz-Signature=b91e74b2fd506ecc95fd80d5adeee2f451ac6d0b16cb10ff84872e8fdfef1ae6&X-Amz-SignedHeaders=host&actor_id=104174838&key_id=0&repo_id=686460475"
+      alt="뽀송이" style="width: 100%;">
+    <p><strong>이름 :</strong> 뽀송이</p> 
+    <p><strong>생년월일 :</strong> 2021-01-13</p>
+    <p><strong>나이 :</strong> 3살</p>
+    <p><strong>성별 :</strong> 남자</p>
+    <p><strong>여자친구 :</strong> 마이멜로디</p>
+  </section>
 
 
-        // 2. 만났던 날짜들 / 주요 활동 //
-        meetingDates.forEach((entry, index) => {
-            const listItem = document.createElement('li');
-            const day = entry.date.getDate().toString().padStart(2, '0');
-            const dateText = `${entry.date.getFullYear()}년 ${entry.date.getMonth() + 1}월 ${day}일`;
-            
-            listItem.textContent = dateText;
-            listItem.addEventListener('click', () => {
-                const infoText1 = `날짜 - ${entry.date.getFullYear()}. ${entry.date.getMonth() + 1}. ${day}`;
-                main_day.textContent = infoText1;
-                const infoText2 = `위치 - ${entry.text}`;
-                main_subway.textContent = infoText2;
-                const infoText3 = `장소 - ${entry.details}`;
-                main_add.textContent = infoText3;
-            });
-            
-            dateList.appendChild(listItem);
-        });
+  <script>
+    // 변수 선언 //
+    const meetingDates = [
+      { date: new Date('2023-04-29'), text: '서울시 은평구', details: '연신내 달빛포차' },
+      { date: new Date('2023-06-14'), text: '서울시 용산구', details: '숙명여대 마시앤바시' },
+      { date: new Date('2023-07-05'), text: '서울시 용산구', details: '용산 CGV' },
+      { date: new Date('2023-07-27'), text: '서울시 은평구', details: '응암 벚꽃나무' },
+      { date: new Date('2023-08-04'), text: '고양시 일산동구', details: '일산 마음식당' },
+      { date: new Date('2023-08-19'), text: '서울시 종로구', details: '서울 국립현대미술관' },
+      { date: new Date('2023-08-24'), text: '수원시 장안구', details: '광교 집' },
+      { date: new Date('2023-08-30'), text: '서울시 서대문구', details: '홍제 안짱' },
+      { date: new Date('2023-09-07'), text: '서울시 은평구', details: '녹번 지하실꼼지락' },
+      { date: new Date('2023-09-14'), text: '수원시 장안구', details: '광교 집' },
+      { date: new Date('2023-09-21'), text: '서울시 은평구', details: '연신내 방탈출 미로' },
+      { date: new Date('2023-10-02'), text: '서울시 은평구', details: '한강 따릉이 자전거' },
+      { date: new Date('2023-10-09'), text: '서울시 은평구', details: '녹번 지하실꼼지락' },
+      { date: new Date('2023-10-27'), text: '서울시 은평구', details: '불광 CGV' },
+      { date: new Date('2023-11-04'), text: '수원시 장안구', details: '광교 집' },
+      { date: new Date('2023-11-18'), text: '서울시 은평구', details: '연신내 레드버튼카페' },
+      { date: new Date('2023-11-22'), text: '서울시 은평구', details: '녹번 투썸플레이스' },
+      { date: new Date('2023-12-03'), text: '서울시 서대문구', details: '홍제 안짱' }
+    ];
+    const futureDates = [
+      { date: '남산타워 가기' },
+      { date: '가을에 등산하기' },
+      { date: '강릉 여행하기' },
+      { date: '배낭 여행하기' },
+      { date: '한강에서 야경보기' }
+    ];
+    const countdown = document.getElementById('countdown');
+    const dateList = document.getElementById('date-list');
+    const main_day = document.getElementById('main_day');
+    const main_subway = document.getElementById('main_subway');
+    const main_add = document.getElementById('main_add');
+    const futurelist = document.getElementById('future-list');
 
 
-        // 3. 미래 계획 //
-        futureDates.forEach((entry, index) => {
-            const listItem = document.createElement('li');
-            const dateText = `${index + 1}. ${entry.date}`;
-            listItem.textContent = dateText;
+    // 1. 디데이 기준 //
+    const dDay = new Date('2023-08-20T00:00:00');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); //시간 무시하기
+    const timeDifference = today - dDay;
+    const oneDay = 24 * 60 * 60 * 1000;
+    const daysPassed = Math.floor(timeDifference / oneDay) + 1; //만난 날 기준으로 1일
+    countdown.textContent = `${daysPassed}일`;
 
-            futurelist.appendChild(listItem);
-        })
-        </script>
 
-        <div id="passwordForm" class="login-container">
+    // 2. 만났던 날짜들 / 주요 활동 //
+    meetingDates.forEach((entry, index) => {
+      const listItem = document.createElement('li');
+      const day = entry.date.getDate().toString().padStart(2, '0');
+      const dateText = `${entry.date.getFullYear()}년 ${entry.date.getMonth() + 1}월 ${day}일`;
+
+      listItem.textContent = dateText;
+      listItem.addEventListener('click', () => {
+        const infoText1 = `날짜 - ${entry.date.getFullYear()}. ${entry.date.getMonth() + 1}. ${day}`;
+        main_day.textContent = infoText1;
+        const infoText2 = `위치 - ${entry.text}`;
+        main_subway.textContent = infoText2;
+        const infoText3 = `장소 - ${entry.details}`;
+        main_add.textContent = infoText3;
+      });
+
+      dateList.appendChild(listItem);
+    });
+
+
+    // 3. 미래 계획 //
+    futureDates.forEach((entry, index) => {
+      const listItem = document.createElement('li');
+      const dateText = `${index + 1}. ${entry.date}`;
+      listItem.textContent = dateText;
+
+      futurelist.appendChild(listItem);
+    })
+  </script>
+
+  <!-- <div id="passwordForm" class="login-container">
             <div class="login-form">
                 <form id="loginForm">
                 <label for="password" class="login-label">우리가 처음 사귄 날짜</label>
@@ -318,9 +332,9 @@
                 <button type="submit" class="login-button">입장하기</button>
                 </form>
             </div>
-        </div>
+        </div> -->
 
-        <script>
+  <!-- <script>
             document.addEventListener('DOMContentLoaded', function () {
               var passwordForm = document.getElementById('passwordForm');
               var sections = document.querySelectorAll('section');
@@ -355,7 +369,7 @@
             // 날짜를 YYYY-MM-DD 형식으로 변환하여 placeholder에 적용
             const datesum = `${year}${month}${day}`;
             document.getElementById('password').placeholder = `ex) ${datesum}`;
-        </script>
+        </script> -->
 </body>
 
 </html>
